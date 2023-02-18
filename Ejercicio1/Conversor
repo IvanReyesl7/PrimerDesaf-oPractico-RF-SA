@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conversor</title>
+</head>
+<body>
+    <form action='3.5.proc.php'method="post" name="conversor">  
+        
+        <label> Introduzca el valor: </label><br /><br />
+    
+            <input type="text" name="valor" onChange="validarnumero(valor);" /> <br /> <br />   
+            
+            <label> Selecciona tu moneda:          
+            <select name= "lista_actual">           
+                
+                <option value="dolar">Dolar</option>
+                <option value="euro">Euro</option>
+                <option value="libra">Libra</option>
+                <option value="Yen">Yen</option>
+                
+            </select>
+        </label> <br />
+        
+        <label> Selecciona la moneda que requieres:
+    
+        <select name="lista_despues">             
+                
+                <option value="dolar1">Dolar</option>
+                <option value="euro1">Euro</option>
+                <option value="libra1">Libra</option>
+                <option value="yen1">Yen</option>
+                
+        </select>
+        </label> <br /> <br />
+        
+        <input type= "submit" value= "Ver" onclick = "funcion();">  
+        <input type= "reset" value= "reinicia">
+
+
+        <?php
+            function convertir() {
+
+                $moneda = $_POST[‘lista_actual’];
+            $moneda2 = $_POST[‘lista_despues’];
+            $euro_dolar = 1.07;
+            $euro_libra = 0.89;
+            $euro_yen = 143.77;
+            $dolar_euro = 0.93;
+            $dolar_libra = 0.83;
+            $dolar_yen = 134.11;
+            $libra_euro = 1.12;
+            $libra_dolar = 1.20;
+            $libra_yen = 161.52;
+            $yen_euro = 0.0070;
+            $yen_dolar = 0.0075;
+            $yen_libra = 0.0062;  
+            
+            echo "Tu moneda vale: " ;
+            
+            switch ($moneda and $moneda2) {
+                
+                case $moneda == "dolar" and $moneda2 == "euro1":     
+                echo "<div>".$_POST[‘valor’] * $dolar_euro"</div>";
+                break;
+                
+                case $moneda == "dolar" and $moneda2 == "libra1":     
+                echo "<div>".$_POST[‘valor’] * $dolar_libra"</div>";     
+                break;
+                
+                case $moneda == "dolar" and $moneda2 == "yen1":     
+                echo "<div>".$_POST[‘valor’] * $dolar_yen</div>";     
+                break;
+                
+                case $moneda == "euro" and $moneda2 == "dolar1":     
+                echo "<div>".$_POST[‘valor’] * $euro_dolar</div>";     
+                break;
+                
+                case $moneda == "euro" and $moneda2 == "libra1":     
+                echo "<div>".$_POST[‘valor’] * $euro_libra</div>";     
+                break;
+                
+                case $moneda == "euro" and $moneda2 == "yen1":     
+                echo "<div>".$_POST[‘valor’] * $euro_yen</div>";     
+                break;
+                
+                case $moneda == "libra" and $moneda2 == "dolar1":     
+                echo "<div>".$_POST[‘valor’] * $libra_dolar</div>";     
+                break;
+                
+                case $moneda == "libra" and $moneda2 == "euro1":     
+                echo "<div>".$_POST[‘valor’] * $libra_euro"</div>";     
+                break;
+                
+                case $moneda == "libra" and $moneda2 == "yen1":     
+                echo "<div>".$_POST[‘valor’] * $libra_yen</div>";     
+                break;
+                
+                case $moneda == "yen" and $moneda2 == "dolar1":     
+                echo "<div>".$_POST[‘valor’] * $yen_dolar</div>";     
+                break;
+                
+                case $moneda == "yen" and $moneda2 == "euro1":     
+                echo "<div>".$_POST[‘valor’] * $yen_euro"</div>";     
+                break;
+                
+                case $moneda == "yen" and $moneda2 == "libra1":     
+                echo "<div>".$_POST[‘valor’] * $yen_libra</div>";     
+                break;                  
+            }
+
+            }
+        ?>
+
+        <input type="submit" name="" value="Buscar" onclick = "funcion();">
+        <script>
+        function funcion(){
+            alert('<?php echo convertir(); ?>');
+            /* Escribir en el Documento*/
+            document.write('<?php echo convertir(); ?>');
+        }
+        </script>
+        
+    </form>
+</body>
+</html>
+
+
